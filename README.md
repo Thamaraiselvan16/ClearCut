@@ -1,12 +1,13 @@
 # CLEARCUT
 
-Welcome to CLEARCUT, a Django project developed for the "Code Quest Summer of Innovation 2024." CLEARCUT allows users to easily upload images with backgrounds and download the same images with the backgrounds removed. Additionally, it provides a preview of both the original and processed images.
+Welcome to CLEARCUT, a Django project developed for the "Code Quest Summer of Innovation 2024." CLEARCUT allows users to easily upload images with backgrounds and download the same images with the backgrounds removed. Additionally, it provides a preview of both the original and processed images. When you upload a new image, the previously uploaded image is automatically deleted.
 
 ## Features
 
 - **One-click Upload**: Quickly upload images with backgrounds.
 - **One-click Download**: Easily download images with the backgrounds removed.
 - **Image Preview**: View both the original and background-free images before downloading.
+- **Automatic Cleanup**: Automatically delete the previously uploaded image when a new one is uploaded.
 
 ## Getting Started
 
