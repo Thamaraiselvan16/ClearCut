@@ -55,6 +55,7 @@ Welcome to CLEARCUT, a Django project developed for the "Code Quest Summer of In
 
 5. **Start the development server:**
     ```sh
+    cd CUTOUT_TOOL
     python manage.py runserver
     ```
 
