@@ -1,0 +1,303 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClearCut</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Define CSS Variables for easier customization */
+        :root {
+            --primary-color: #43a047;
+            --secondary-color: #388e3c;
+            --background-gradient-start: #667eea;
+            --background-gradient-end: #764ba2;
+            --card-background: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+    
+        body {
+            background: linear-gradient(to right, var(--background-gradient-start), var(--background-gradient-end));
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+    
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease;
+        }
+    
+        .lead {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            animation: slideInUp 1s ease;
+        }
+    
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: var(--card-background);
+            box-shadow: 0 10px 20px var(--shadow-color);
+            transition: all 0.3s ease;
+            animation: slideInLeft 1s ease;
+            backdrop-filter: blur(10px);
+        }
+    
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+    
+        .upload-btn {
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: #fff;
+        }
+    
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(to right, var(--secondary-color), #2e7d32);
+        }
+    
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            width: 100%%;
+        }
+    
+        .image-card {
+            width: calc(30% - 10px); /* Reduced width from 50% to 40% */
+
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: var(--card-background);
+            box-shadow: 0 10px 20px var(--shadow-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+    
+        .image-card img {
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+    
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+    
+        .download-btn {
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
+            text-align: center;
+        }
+    
+        @media screen and (max-width: 768px) {
+            .image-card {
+                width: calc(100% - 20px);
+            }
+        }
+    
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    
+        .download-btn a {
+            animation: pulse 2s infinite;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease, box-shadow 0.2s ease;
+        }
+    
+        .download-btn a:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(to right, var(--secondary-color), #2e7d32);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+    
+        .download-btn a:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Advanced Button Styles */
+        .btn-advanced {
+            background: none;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+    
+        .btn-advanced:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+    
+        .btn-advanced-alt {
+            background: var(--secondary-color);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+    
+        .btn-advanced-alt:hover {
+            background: #2e7d32;
+        }
+    
+        /* Additional Hover Effects for Images */
+        .image-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    
+        .image-card:hover::before {
+            opacity: 1;
+        }
+    
+        .image-card h2 {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>ClearCut</h1>
+        <p class="lead">Upload an image and remove the background effortlessly.</p>
+    </div>
+
+    <div class="container form-container">
+        <form action="{% url 'remback' %}" class="mt-4" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="file" name="file" aria-label="Upload" required>
+                <button type="submit" class="btn btn-success upload-btn">Remove Background</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        {% if rembg_img_name %}
+        <div class="image-container">
+            <div class="image-card">
+                <h2 class="card-title text-center mb-4">Original Image</h2>
+                <img src="{% url 'download' org_img_name %}" class="img-fluid rounded" alt="Original Image">
+            </div>
+            <div class="image-card">
+                <h2 class="card-title text-center mb-4">ClearCut Image</h2>
+                <img src="{% url 'download' rembg_img_name %}" class="img-fluid rounded" alt="Image with Background Removed">
+            </div>
+        </div>
+        <div class="text-center download-btn">
+            <a href="{% url 'download' rembg_img_name %}" download class="btn btn-success"> ⬇️ Download</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
