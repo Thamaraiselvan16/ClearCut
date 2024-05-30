@@ -9,6 +9,16 @@ Welcome to CLEARCUT, a Django project developed for the "Code Quest Summer of In
 - **Image Preview**: View both the original and background-free images before downloading.
 - **Automatic Cleanup**: Automatically delete the previously uploaded image when a new one is uploaded.
 
+## Technologies Used
+
+- **Python**
+- **Django**
+- **MySQL**
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **Bootstrap**
+
 ## Getting Started
 
 ### Prerequisites
